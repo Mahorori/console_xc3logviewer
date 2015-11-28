@@ -214,17 +214,21 @@ int _tmain(int argc, _TCHAR* argv[])
 	hFileIn = CreateFile(tszFileNameIn, GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL,
 		OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
 
-	hFileOut = CreateFile(tszFileNameOut, GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL,
-		CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
-
 	if (hFileIn == INVALID_HANDLE_VALUE)
 	{
 		_tprintf(TEXT("couldn't open log file : %s\n"), tszFileNameIn);
 		return 0;
 	}
+
+	hFileOut = CreateFile(tszFileNameOut, GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL,
+		CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
+
+
 	if (hFileOut == INVALID_HANDLE_VALUE)
 	{
 		_tprintf(TEXT("couldn't open output file : %s\n"), tszFileNameOut);
+
+		CloseHandle(hFileIn);
 		return 0;
 	}
 

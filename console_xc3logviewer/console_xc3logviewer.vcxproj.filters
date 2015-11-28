@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="tomcrypt">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="main">
+      <UniqueIdentifier>{155e0d2e-cba0-4a75-bf23-78313d3e6c6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="rijndael">
+      <UniqueIdentifier>{3236b602-949d-4984-9cc4-50d005d761ab}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="rijndael.h">
+      <Filter>rijndael</Filter>
+    </ClInclude>
+    <ClInclude Include="rijndael_tables.h">
+      <Filter>rijndael</Filter>
+    </ClInclude>
+    <ClInclude Include="tomcrypt.h">
+      <Filter>tomcrypt</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>main</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>main</Filter>
+    </ClInclude>
+    <ClInclude Include="tomcrypt_cfg.h">
+      <Filter>tomcrypt</Filter>
+    </ClInclude>
+    <ClInclude Include="tomcrypt_argchk.h">
+      <Filter>tomcrypt</Filter>
+    </ClInclude>
+    <ClInclude Include="tomcrypt_macros.h">
+      <Filter>tomcrypt</Filter>
+    </ClInclude>
+    <ClInclude Include="xc3.h">
+      <Filter>main</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="tomcrypt_argchk.cpp">
+      <Filter>tomcrypt</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="rijndael.cpp">
+      <Filter>rijndael</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

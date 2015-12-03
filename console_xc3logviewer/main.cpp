@@ -133,43 +133,43 @@ bool decrypt_and_output(HANDLE hFile, HANDLE hFileOut)
 
 		switch (buffer.type)
 		{
-		case 9039:
-		{
-			// B8 4F 23 00 00 C7 06 6D 4C 78 7A
-			sprintf_s(buffer.buffer, "client closed(?) with error code : 0x%08X", buffer.errorcode);
-			printf(buffer.buffer);
-			printf("\n");
-			break;
-		}
-		case 9040:
-		{
-			// ZeroMemory(&ctx, sizeof(ctx));
-			ctx.init(XC3_LOG_S1, strlen(XC3_LOG_S1));
-
-			for (int i = 0; i < sizeof(buffer.buffer); i++)
-				buffer.buffer[i] ^= ctx.calc();
-
-			break;
-		}
-		case 9041:
-		{
-			if (!decrypt(sizeof(buffer.buffer), buffer.buffer, buffer.key))
+			case 9039:
 			{
-				_tprintf(TEXT("couldn't decrypt.\n"));
-				return false;
+				// B8 4F 23 00 00 C7 06 6D 4C 78 7A
+				sprintf_s(buffer.buffer, "client closed(?) with error code : 0x%08X", buffer.errorcode);
+				printf(buffer.buffer);
+				printf("\n");
+				break;
 			}
+			case 9040:
+			{
+				// ZeroMemory(&ctx, sizeof(ctx));
+				ctx.init(XC3_LOG_S1, strlen(XC3_LOG_S1));
 
-			break;
-		}
-		default:
-		{
-			// copy type
-			memcpy(sign_dst, &buffer.type, 2);
-			sign_dst[2] = 0;
+				for (int i = 0; i < sizeof(buffer.buffer); i++)
+					buffer.buffer[i] ^= ctx.calc();
 
-			_tprintf(TEXT("unknown type : %s %04X\n"), sign_dst, buffer.type);
-			break;
-		}
+				break;
+			}
+			case 9041:
+			{
+				if (!decrypt(sizeof(buffer.buffer), buffer.buffer, buffer.key))
+				{
+					_tprintf(TEXT("couldn't decrypt.\n"));
+					return false;
+				}
+
+				break;
+			}
+			default:
+			{
+				// copy type
+				memcpy(sign_dst, &buffer.type, 2);
+				sign_dst[2] = 0;
+
+				_tprintf(TEXT("unknown type : %s %04X\n"), sign_dst, buffer.type);
+				break;
+			}
 		}
 
 		_localtime32_s(&tm, &buffer.unix_time);

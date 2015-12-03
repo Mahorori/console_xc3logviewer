@@ -67,7 +67,7 @@ struct XC3_LOG_BUFFER
 	unsigned short type;
 	// 8
 	unsigned char key[16];
-	char name[0x10];
+	char name[16];
 	__time32_t unix_time;
 	unsigned long _2C;
 	unsigned long _30;
